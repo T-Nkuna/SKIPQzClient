@@ -1,0 +1,7 @@
+{
+  "name": "SKIPQzClient",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
