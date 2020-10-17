@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { MenuController, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -10,12 +10,17 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  sideMenuItems:Array<{text:string;}> = [
+    {text:"My Bookings"}
+  ];
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private menuControlller:MenuController
   ) {
     this.initializeApp();
+    
   }
 
   initializeApp() {
@@ -23,5 +28,12 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  toggleSideMenu(){
+
+    this.menuControlller.enable(true,"sideMenu");
+    this.menuControlller.open("sideMenu");
+   
   }
 }
