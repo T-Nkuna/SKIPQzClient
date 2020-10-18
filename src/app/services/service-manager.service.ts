@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ScheduledServiceProvider } from '../models/scheduled-service-provider.model';
+import { ServiceProviderModel } from '../models/service-provider.model';
 import { ServiceModel } from '../models/service.model';
 import { ConfigurationManagerService } from './configuration-manager.service';
 
@@ -21,7 +23,7 @@ export class ServiceManagerService {
 
    public getServiceProviders(serviceId:number,pageNumber:number,pageSize:number)
    {
-     return this._httpClient.get(`${this.serviceUrl}/${serviceId}/providers?pageIndex=${pageNumber-1}&pageSize=${pageSize}`)
+     return this._httpClient.get<Array<ScheduledServiceProvider>>(`${this.serviceUrl}/${serviceId}/providers?pageIndex=${pageNumber-1}&pageSize=${pageSize}`)
             .toPromise();
    }
 }

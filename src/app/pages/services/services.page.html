@@ -1,7 +1,7 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let service of services" [routerLink]="['/services',service.serviceId,'providers']">
-      <ion-avatar>
+      <ion-avatar slot="start">
         <ion-img src="{{service.imageUrl}}"></ion-img>
       </ion-avatar>
      

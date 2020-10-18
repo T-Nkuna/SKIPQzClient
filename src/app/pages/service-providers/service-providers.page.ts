@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ScheduledServiceProvider } from 'src/app/models/scheduled-service-provider.model';
+import { ServiceProviderModel } from 'src/app/models/service-provider.model';
 import { ServiceManagerService } from 'src/app/services/service-manager.service';
 
 @Component({
@@ -9,6 +11,8 @@ import { ServiceManagerService } from 'src/app/services/service-manager.service'
 })
 export class ServiceProvidersPage implements OnInit {
    private _serviceId:number;
+   serviceProviders:Array<ScheduledServiceProvider> = [];
+   
   constructor(private _activatedRoute:ActivatedRoute, private _serviceManager:ServiceManagerService) { }
 
   ngOnInit() {
@@ -16,7 +20,7 @@ export class ServiceProvidersPage implements OnInit {
     .get("serviceId")):-1;
     this._serviceManager.getServiceProviders(this._serviceId,1,100)
     .then(serviceProviders=>{
-      console.log(serviceProviders);
+      this.serviceProviders = serviceProviders;
     })
   }
 

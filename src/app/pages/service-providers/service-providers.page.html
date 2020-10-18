@@ -1,1 +1,10 @@
-<div>It Works</div>
+<ion-list>
+    <ion-item *ngFor="let serviceProvider of serviceProviders" [routerLink]="[serviceProvider.serviceProviderId,'schedule']">
+        <ion-avatar slot="start">
+            <ion-img src=""></ion-img>
+        </ion-avatar>
+        <ion-label>
+            {{serviceProvider.name}}
+        </ion-label>
+    </ion-item>
+</ion-list>

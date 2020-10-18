@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { ServiceProvidersPageRoutingModule } from './service-providers-routing.module';
 
 import { ServiceProvidersPage } from './service-providers.page';
-
+import {CalendarModule} from 'ion2-calendar';
+import { ScheduleComponent } from 'src/app/components/schedule/schedule.component';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ServiceProvidersPageRoutingModule
+    ServiceProvidersPageRoutingModule,
+    CalendarModule
   ],
-  declarations: [ServiceProvidersPage]
+  declarations: [ServiceProvidersPage,ScheduleComponent]
 })
 export class ServiceProvidersPageModule {}

@@ -9,12 +9,7 @@ import { ServiceManagerService } from 'src/app/services/service-manager.service'
 })
 export class ServicesPage implements OnInit {
 
-  @Input() services:Array<ServiceModel> = [{
-    name:"Hair Cut",
-    cost:2300,
-    duration:30,
-    serviceId:1
-  }];
+  @Input() services:Array<ServiceModel> = [];
   constructor(private _serviceManager:ServiceManagerService) { }
 
   ngOnInit() {
