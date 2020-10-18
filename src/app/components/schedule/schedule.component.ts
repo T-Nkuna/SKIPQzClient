@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ScheduledServiceProvider } from 'src/app/models/scheduled-service-provider.model';
 import { ServiceProviderModel } from 'src/app/models/service-provider.model';
+import { Shift } from 'src/app/models/work-day.model';
 import { ServiceProviderManagerService } from 'src/app/services/service-provider-manager.service';
 
 @Component({
@@ -12,8 +13,9 @@ import { ServiceProviderManagerService } from 'src/app/services/service-provider
 export class ScheduleComponent implements OnInit {
 
   serviceProvider:ScheduledServiceProvider;
-  type:string;
-  date:string;
+  timeSlots:Array<Shift> = [];
+  type:string ="js-date";
+  date:Date;
   private _serviceProviderId = -1;
  
   constructor(private _serviceProviderManager:ServiceProviderManagerService,private _activatedRoute:ActivatedRoute) {
@@ -36,9 +38,18 @@ export class ScheduleComponent implements OnInit {
     }
   }
 
-  calendarDateChange(event)
+  calendarDateChange(selectedDate:Date)
   {
-    console.log(event);
+
+     let scheduledWorkDay = this.serviceProvider.scheduledWorkDays.find(wd=>wd.dayOfWeek==selectedDate.getDay())
+     if(scheduledWorkDay)
+     {
+       this.timeSlots = scheduledWorkDay.shifts;
+     }
+     else
+     {
+       this.timeSlots = [];
+     }
   }
 
 }
