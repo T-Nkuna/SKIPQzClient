@@ -9,6 +9,6 @@ export class ConfigurationManagerService {
   constructor() { }
 
   get serviceHost(){
-    return this.env==="dev"?"https://localhost:44384":"";
+    return this.env==="dev"?"https://localhost:44384":"https://skipqzapi.etiocs.co.za";
   }
 }
