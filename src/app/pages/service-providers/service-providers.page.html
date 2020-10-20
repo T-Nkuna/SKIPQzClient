@@ -1,7 +1,7 @@
 <ion-list>
     <ion-item *ngFor="let serviceProvider of serviceProviders" [routerLink]="[serviceProvider.serviceProviderId,'schedule']">
         <ion-avatar slot="start">
-            <ion-img src=""></ion-img>
+            <ion-img src="{{configManager.serviceHost+'/'+serviceProvider.imageUrl}}"></ion-img>
         </ion-avatar>
         <ion-label>
             {{serviceProvider.name}}

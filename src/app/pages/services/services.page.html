@@ -2,7 +2,7 @@
   <ion-list>
     <ion-item *ngFor="let service of services" [routerLink]="['/services',service.serviceId,'providers']">
       <ion-avatar slot="start">
-        <ion-img src="{{service.imageUrl}}"></ion-img>
+        <ion-img src="{{configManager.serviceHost+'/'+service.imageUrl}}"></ion-img>
       </ion-avatar>
      
         <ion-grid>

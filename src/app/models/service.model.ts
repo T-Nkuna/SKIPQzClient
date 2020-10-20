@@ -6,11 +6,13 @@ export class ServiceModel{
     public cost:number;
     public serviceProviders:Array<ServiceProviderModel>;
     public serviceId:number = -1;
-    constructor(name:string,duration:number,cost:number,serviceProviders:Array<ServiceProviderModel>=[])
+    public imageUrl:string ="";
+    constructor(name:string,duration:number,cost:number,serviceProviders:Array<ServiceProviderModel>=[],imageUrl:string="")
     {
         this.name =name;
         this.duration = duration;
         this.cost =cost;
         this.serviceProviders = serviceProviders;
+        this.imageUrl = imageUrl;
     }
 }
