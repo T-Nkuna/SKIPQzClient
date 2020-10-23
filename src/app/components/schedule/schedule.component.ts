@@ -17,7 +17,7 @@ export class ScheduleComponent implements OnInit {
   type:string ="js-date";
   date:Date;
   private _serviceProviderId = -1;
- 
+  private _serviceId = -1;
   constructor(private _serviceProviderManager:ServiceProviderManagerService,private _activatedRoute:ActivatedRoute) {
     this.serviceProvider = new ScheduledServiceProvider(
       new ServiceProviderModel(),
@@ -28,6 +28,11 @@ export class ScheduleComponent implements OnInit {
   ngOnInit() {
     if(this._activatedRoute.snapshot.paramMap.has("serviceProviderId")){
       this._serviceProviderId = parseInt(this._activatedRoute.snapshot.paramMap.get("serviceProviderId"))
+    }
+
+    if(this._activatedRoute.snapshot.paramMap.has("serviceId"))
+    {
+      this._serviceId = parseInt(this._activatedRoute.snapshot.paramMap.get("serviceId"));
     }
     if(this._serviceProviderId!==-1)
     {
@@ -44,7 +49,10 @@ export class ScheduleComponent implements OnInit {
      let scheduledWorkDay = this.serviceProvider.scheduledWorkDays.find(wd=>wd.dayOfWeek==selectedDate.getDay())
      if(scheduledWorkDay)
      {
-       this.timeSlots = scheduledWorkDay.shifts;
+       this._serviceProviderManager.getServiceProviderSchedule(this._serviceProviderId,this._serviceId,selectedDate)
+       .then(response=>{
+         this.timeSlots = response;
+       });
      }
      else
      {
