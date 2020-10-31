@@ -37,13 +37,16 @@ export class BookingCardComponent implements OnInit {
      this.extrasCost = parseFloat(paramMap.get("extrasCost"));
      this.bookedTime = paramMap.get("bookedTime");
      this.bookedDate = paramMap.get("bookedDate");
-     this._serviceManager.getService(this.serviceId)
-     .then(service=>{
-       this.bookedService=service;
-       this.cost = this.bookedService.cost+this.extrasCost;
-      });
-     this._serviceProviderManager.getServiceProvider(this.serviceProviderId)
-     .then(sProvider=>this.bookedServiceProvider=sProvider);
+      this._configService.showSpinner();
+     Promise.all([ this._serviceManager.getService(this.serviceId),this._serviceProviderManager.getServiceProvider(this.serviceProviderId)])
+     .then(responses=>{
+       let service =responses[0];
+       let sProvider = responses[1];
+      this.bookedService=service;
+      this.cost = this.bookedService.cost+this.extrasCost;
+      this.bookedServiceProvider=sProvider
+     }).finally(()=>this._configService.hideSpinner())
+     
   }
 
   formatDate(dateString:string)

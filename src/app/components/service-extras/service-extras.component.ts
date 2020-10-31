@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ExtraModel } from 'src/app/models/extra.model';
 import { SelectableExtraModel } from 'src/app/models/selectable-extra.model';
+import { ConfigurationManagerService } from 'src/app/services/configuration-manager.service';
 import { ExtraManagerService } from 'src/app/services/extra-manager.service';
 
 @Component({
@@ -17,7 +18,11 @@ export class ServiceExtrasComponent implements OnInit {
   selectedExtras:ExtraModel[] = [];
   startTimeSlot:string ="";
   bookedDate:string="";
-  constructor(private _extraManager:ExtraManagerService,private _activatedRoute:ActivatedRoute,private _router:Router) { }
+  constructor(private _extraManager:ExtraManagerService,
+    private _activatedRoute:ActivatedRoute,
+    private _router:Router,
+    private _configManager:ConfigurationManagerService
+    ) { }
 
   ngOnInit() {
     let paramMap = this._activatedRoute.snapshot.paramMap;
@@ -40,10 +45,11 @@ export class ServiceExtrasComponent implements OnInit {
     {
       this.bookedDate = paramMap.get("bookedDate");
     }
+    this._configManager.showSpinner();
     this._extraManager.getServiceExtras(this.serviceId)
     .then(extras=>{
       this.extras=extras.map(ex=>({...ex,isSelected:false}));
-    });
+    }).finally(()=>this._configManager.hideSpinner());
   }
 
   extraSelected(event,extra:SelectableExtraModel){

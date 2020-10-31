@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MenuController, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { ConfigurationManagerService } from './services/configuration-manager.service';
 
 @Component({
   selector: 'app-root',
@@ -17,10 +18,10 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private menuControlller:MenuController
+    private menuControlller:MenuController,
+    public configurationManager:ConfigurationManagerService
   ) {
     this.initializeApp();
-    
   }
 
   initializeApp() {

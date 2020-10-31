@@ -20,10 +20,11 @@ export class ServiceProvidersPage implements OnInit {
   ngOnInit() {
     this._serviceId  = this._activatedRoute.snapshot.paramMap.has("serviceId")?parseInt(this._activatedRoute.snapshot.paramMap
     .get("serviceId")):-1;
+    this.configManager.showSpinner();
     this._serviceManager.getServiceProviders(this._serviceId,1,100)
     .then(serviceProviders=>{
       this.serviceProviders = serviceProviders;
-    })
+    }).finally(()=>this.configManager.hideSpinner());
   }
 
 }

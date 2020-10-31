@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { tick } from '@angular/core/testing';
 import { ServiceModel } from 'src/app/models/service.model';
 import { ConfigurationManagerService } from 'src/app/services/configuration-manager.service';
 import { ServiceManagerService } from 'src/app/services/service-manager.service';
@@ -15,10 +16,11 @@ export class ServicesPage implements OnInit {
   }
 
   ngOnInit() {
+    this.configManager.showSpinner();
     this._serviceManager.getServices(1,50)
     .then(services=>{
       this.services = services;
-    })
+    }).finally(()=>this.configManager.hideSpinner())
   }
 
 }

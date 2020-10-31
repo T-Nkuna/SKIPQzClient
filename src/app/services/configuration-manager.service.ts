@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class ConfigurationManagerService {
   
   env:string = "prod";
+   _showSpinner:boolean = false;
   constructor() { }
 
   get serviceHost(){
@@ -24,5 +25,18 @@ export class ConfigurationManagerService {
      {
        return "";
      }
+  }
+
+  get spinnerState(){
+    return this._showSpinner;
+  }
+
+  showSpinner()
+  {
+    this._showSpinner =true;
+  }
+
+  hideSpinner(){
+    this._showSpinner =false;
   }
 }

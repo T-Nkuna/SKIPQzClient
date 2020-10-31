@@ -9,6 +9,7 @@
     </ion-toolbar>
   </ion-header>
   <ion-content id="content">
+    <ion-spinner *ngIf = "configurationManager._showSpinner" style="position:fixed;top:45vh;left:45vw;z-index:5"></ion-spinner>
     <ion-router-outlet></ion-router-outlet>
   </ion-content>
   <ion-menu side="start" menuId="sideMenu" contentId="content">
