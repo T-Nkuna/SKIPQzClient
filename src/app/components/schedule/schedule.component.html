@@ -3,7 +3,7 @@
 <h4 *ngIf="timeSlots.length>0" class="ion-text-center">Select Slot</h4>
 <div style="display:grid;grid-template-columns: auto auto auto;max-width: 640px;margin:auto" [class.ion-padding]="timeSlots.length>0">
   <ng-container *ngFor="let slot of timeSlots">
-    <ion-button fill="outline">
+    <ion-button fill="outline" (click)="slotSelected(slot.startTimeSlot)">
       {{slot.startTimeSlot}}
     </ion-button>
   </ng-container>

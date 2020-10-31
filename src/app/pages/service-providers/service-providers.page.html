@@ -1,4 +1,8 @@
-<ion-list>
+<ion-content>
+    <p class="ion-text-center">
+        Select Service Provider
+    </p>
+      <ion-list>
     <ion-item *ngFor="let serviceProvider of serviceProviders" [routerLink]="[serviceProvider.serviceProviderId,'schedule']">
         <ion-avatar slot="start">
             <ion-img src="{{configManager.serviceHost+'/'+serviceProvider.imageUrl}}"></ion-img>
@@ -8,3 +12,5 @@
         </ion-label>
     </ion-item>
 </ion-list>
+</ion-content>
+

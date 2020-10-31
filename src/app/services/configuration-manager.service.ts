@@ -5,10 +5,24 @@ import { Injectable } from '@angular/core';
 })
 export class ConfigurationManagerService {
   
-  env:string = "dev";
+  env:string = "prod";
   constructor() { }
 
   get serviceHost(){
     return this.env==="dev"?"https://localhost:44384":"https://skipqzapi.etiocs.co.za";
+  }
+
+  formatDate(dateString:string)
+  {
+     let datePattern = /\d{4}\-\d{1,2}\-\d{1,2}/;
+     if(datePattern.test(dateString))
+     {
+       let dateParts = dateString.split("-").map(str=>parseInt(str));
+       return Intl.DateTimeFormat("en-GB",{month:"short",year:"numeric",day:"numeric"}).format(new Date(dateParts[0],dateParts[1],dateParts[2]))
+     }
+     else
+     {
+       return "";
+     }
   }
 }

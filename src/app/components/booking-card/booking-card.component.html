@@ -1,0 +1,26 @@
+<ion-content>
+  <ion-card>
+    <ion-card-header color="primary">
+      <ion-card-title>Booking</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div>
+              <div><b>Service Provider:</b><span> {{bookedServiceProvider.name}}</span></div>
+              <div><b>Service:</b>&nbsp;<span>{{bookedService.name}}</span></div>
+              <div><b>Date:</b>&nbsp;<span>{{formatDate(bookedDate)}}</span></div>
+              <div><b>Time:</b>&nbsp;<span>{{bookedTime}}</span></div>
+              <div><b>Cost:</b>&nbsp;<span>R&nbsp;{{cost}}</span></div> 
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+     
+      <div>
+        <ion-button>Book</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

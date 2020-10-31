@@ -1,0 +1,19 @@
+<ion-content>
+  
+<p class="ion-text-center">
+  Select extras
+</p>
+<ion-list>
+ <ng-container *ngFor="let extra of extras">
+   <ion-item >
+     <ion-checkbox slot="start" [(ngModel)]="extra.isSelected" (ionChange)="extraSelected($event,extra)"></ion-checkbox>
+     <ion-label>
+       {{extra.name+" - R "+extra.cost}}
+     </ion-label>
+ </ion-item>
+ </ng-container>
+</ion-list>
+<div class="ion-padding">
+ <ion-button (click)="continueClicked()">Continue</ion-button>
+</div>
+</ion-content>

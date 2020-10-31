@@ -4,14 +4,16 @@ import { ScheduledServiceProvider } from '../models/scheduled-service-provider.m
 import { ServiceProviderModel } from '../models/service-provider.model';
 import { ServiceModel } from '../models/service.model';
 import { ConfigurationManagerService } from './configuration-manager.service';
+import { JournalingService } from './journaling.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceManagerService {
+export class ServiceManagerService extends JournalingService{
 
   serviceUrl = "";
   constructor(private _httpClient:HttpClient, private _configManager:ConfigurationManagerService) {
+    super();
     this.serviceUrl = `${this._configManager.serviceHost}/api/service`;
    }
 
@@ -25,5 +27,12 @@ export class ServiceManagerService {
    {
      return this._httpClient.get<Array<ScheduledServiceProvider>>(`${this.serviceUrl}/${serviceId}/providers?pageIndex=${pageNumber-1}&pageSize=${pageSize}`)
             .toPromise();
+   }
+
+   public getService(serviceId:number)
+   {
+     return this._httpClient.get<ServiceModel>(`${this.serviceUrl}/${serviceId}`)
+                .toPromise()
+                .catch(err=>this.reportError(err,new ServiceModel("",0,0)))
    }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ScheduledServiceProvider } from 'src/app/models/scheduled-service-provider.model';
 import { ServiceProviderModel } from 'src/app/models/service-provider.model';
 import { Shift } from 'src/app/models/work-day.model';
@@ -18,7 +18,11 @@ export class ScheduleComponent implements OnInit {
   date:Date;
   private _serviceProviderId = -1;
   private _serviceId = -1;
-  constructor(private _serviceProviderManager:ServiceProviderManagerService,private _activatedRoute:ActivatedRoute) {
+  constructor(
+    private _serviceProviderManager:ServiceProviderManagerService,
+    private _activatedRoute:ActivatedRoute,
+    private _router:Router
+    ) {
     this.serviceProvider = new ScheduledServiceProvider(
       new ServiceProviderModel(),
       []
@@ -58,6 +62,10 @@ export class ScheduleComponent implements OnInit {
      {
        this.timeSlots = [];
      }
+  }
+
+  slotSelected =(startTimeSlot:string)=>{
+     this._router.navigate(["/services/serviceExtras",this._serviceId,{serviceProviderId:this._serviceProviderId,startTimeSlot,bookedDate:`${this.date.getFullYear()}-${this.date.getMonth()}-${this.date.getDay()}`}]);
   }
 
 }

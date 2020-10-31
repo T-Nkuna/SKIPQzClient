@@ -1,4 +1,7 @@
 <ion-content>
+  <p class="ion-text-center">
+    Select Service 
+</p>
   <ion-list>
     <ion-item *ngFor="let service of services" [routerLink]="['/services',service.serviceId,'providers']">
       <ion-avatar slot="start">
