@@ -10,16 +10,16 @@
             <div>
               <div><b>Service Provider:</b><span> {{bookedServiceProvider.name}}</span></div>
               <div><b>Service:</b>&nbsp;<span>{{bookedService.name}}</span></div>
-              <div><b>Date:</b>&nbsp;<span>{{formatDate(bookedDate)}}</span></div>
-              <div><b>Time:</b>&nbsp;<span>{{bookedTime}}</span></div>
-              <div><b>Cost:</b>&nbsp;<span>R&nbsp;{{cost}}</span></div> 
+              <div><b>Date:</b>&nbsp;<span>{{formatDate(booking.bookedDate)}}</span></div>
+              <div><b>Time:</b>&nbsp;<span>{{booking.startTimeSlot}}</span></div>
+              <div><b>Cost:</b>&nbsp;<span>R&nbsp;{{formatNumber(cost)}}</span></div> 
             </div>
           </ion-col>
         </ion-row>
       </ion-grid>
      
       <div>
-        <ion-button>Book</ion-button>
+        <ion-button (click)="bookClicked()">Book</ion-button>
       </div>
     </ion-card-content>
   </ion-card>

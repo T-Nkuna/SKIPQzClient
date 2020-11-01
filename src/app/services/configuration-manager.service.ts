@@ -27,6 +27,10 @@ export class ConfigurationManagerService {
      }
   }
 
+  formatNumber(num:number){
+    return Intl.NumberFormat("en-US",{maximumFractionDigits:2}).format(num)
+  }
+
   get spinnerState(){
     return this._showSpinner;
   }

@@ -9,6 +9,7 @@ import { ServicesPageRoutingModule } from './services-routing.module';
 import { ServicesPage } from './services.page';
 import { ServiceExtrasComponent } from 'src/app/components/service-extras/service-extras.component';
 import { BookingCardComponent } from 'src/app/components/booking-card/booking-card.component';
+import { ContactDetailsComponent } from 'src/app/components/contact-details/contact-details.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { BookingCardComponent } from 'src/app/components/booking-card/booking-ca
     IonicModule,
     ServicesPageRoutingModule
   ],
-  declarations: [ServicesPage,ServiceExtrasComponent,BookingCardComponent]
+  declarations: [ServicesPage,ServiceExtrasComponent,BookingCardComponent,ContactDetailsComponent]
 })
 export class ServicesPageModule {}

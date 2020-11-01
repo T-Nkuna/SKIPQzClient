@@ -16,7 +16,7 @@ const routes: Routes = [
     component:ServiceExtrasComponent
   },
   {
-    path:"book/:serviceId/:serviceProviderId",
+    path:"book",
     component:BookingCardComponent
   }
 ];

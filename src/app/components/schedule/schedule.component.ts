@@ -53,7 +53,7 @@ export class ScheduleComponent implements OnInit {
   calendarDateChange(selectedDate:Date)
   {
 
-     let scheduledWorkDay = this.serviceProvider.scheduledWorkDays.find(wd=>wd.dayOfWeek==selectedDate.getDay())
+     let scheduledWorkDay = this.serviceProvider.scheduledWorkDays.find(wd=>wd.dayOfWeek==selectedDate.getDay());
      if(scheduledWorkDay)
      {
        this._configManager.showSpinner();
@@ -69,7 +69,7 @@ export class ScheduleComponent implements OnInit {
   }
 
   slotSelected =(startTimeSlot:string)=>{
-     this._router.navigate(["/services/serviceExtras",this._serviceId,{serviceProviderId:this._serviceProviderId,startTimeSlot,bookedDate:`${this.date.getFullYear()}-${this.date.getMonth()}-${this.date.getDay()}`}]);
+     this._router.navigate(["/services/serviceExtras",this._serviceId,{serviceProviderId:this._serviceProviderId,startTimeSlot,bookedDate:`${this.date.getFullYear()}-${this.date.getMonth()}-${this.date.getDate()}`}]);
   }
 
 }

@@ -65,12 +65,13 @@ export class ServiceExtrasComponent implements OnInit {
   continueClicked = ()=>{
     this._router.navigate([
       "/services/book",
-      this.serviceId,
-      this.serviceProviderId,
       {
         bookedDate:this.bookedDate,
         extrasCost:this.selectedExtras.reduce((c,n)=>c+n.cost,0),
-        bookedTime:this.startTimeSlot
+        bookedTime:this.startTimeSlot,
+        serviceId:this.serviceId,
+        serviceProviderId:this.serviceProviderId,
+        extraIds:this.selectedExtras.map(ex=>ex.extraId)
       }])
   }
 

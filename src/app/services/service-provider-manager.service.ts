@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ScheduledServiceProvider } from '../models/scheduled-service-provider.model';
+import { ServiceProviderModel } from '../models/service-provider.model';
 import { Shift } from '../models/work-day.model';
 import { ConfigurationManagerService } from './configuration-manager.service';
 import { JournalingService } from './journaling.service';
@@ -19,7 +20,8 @@ export class ServiceProviderManagerService extends JournalingService {
   getServiceProvider(serviceProviderId:number)
   {
     return this._httpClient.get<ScheduledServiceProvider>(`${this.serviceUrl}/${serviceProviderId}`)
-            .toPromise();
+            .toPromise()
+            .catch(err=>this.reportError(err,new ScheduledServiceProvider(new ServiceProviderModel(),[])));
   }
 
   public getServiceProviderSchedule(serviceProviderId:number,serviceId:number,scheduledDate:Date)

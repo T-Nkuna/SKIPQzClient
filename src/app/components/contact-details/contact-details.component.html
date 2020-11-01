@@ -1,0 +1,25 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <form  #contactForm="ngForm">
+          <ion-grid>
+            <ion-row *ngFor="let entry of contactDetailEntries">
+               <ion-col>
+                 <ion-item>
+                   <ion-label position="floating">{{nameOf(entry.key)}}</ion-label>
+                   <ion-input [(ngModel)]="entry.value" [name]="entry.key"></ion-input>
+                 </ion-item>
+               </ion-col>
+             </ion-row>
+            
+          </ion-grid>
+          <div>
+            <ion-button (click)="contactFormSubmitted(contactForm.value)">Submit</ion-button>
+            <ion-button (click)="dismissModal()" fill="outline">Cancel</ion-button>
+          </div>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
