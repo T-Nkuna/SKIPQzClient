@@ -9,21 +9,21 @@ const routes: Routes = [
   },
   {
     path: '',
-    children:[
-      {
-        path: 'home',
-        loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-      },
-      {
-        path: 'services',
-        loadChildren: () => import('./pages/services/services.module').then( m => m.ServicesPageModule)
-      },
-      {
-        path: 'services/:serviceId/providers',
-        loadChildren: () => import('./pages/service-providers/service-providers.module').then( m => m.ServiceProvidersPageModule)
-      }
-    ]
-  },{
+    loadChildren:()=>import("./pages/login/login.module").then(m=>m.LoginPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'services',
+    loadChildren: () => import('./pages/services/services.module').then( m => m.ServicesPageModule)
+  },
+  {
+    path: 'services/:serviceId/providers',
+    loadChildren: () => import('./pages/service-providers/service-providers.module').then( m => m.ServiceProvidersPageModule)
+  },
+  {
     path:"**",
     redirectTo:"login",
     pathMatch:"full"
