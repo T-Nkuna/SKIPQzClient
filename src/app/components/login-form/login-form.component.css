@@ -1,0 +1,29 @@
+.login-form-field
+{
+    width: 100%;
+    
+}
+
+.login-form-container
+{
+    display:inline-block;
+    max-width: 264px;
+    color:#A8D9E7;
+}
+
+.btn-block{
+    display:block;
+}
+
+.login-form-container ion-button,.login-form-container a
+{
+    display:inline-block;width:100%;
+}
+
+.login-form-container a
+{
+    text-decoration: underline;
+    color:white;
+    text-align: center;
+    padding:1em;
+}

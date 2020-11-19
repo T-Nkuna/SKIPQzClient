@@ -1,0 +1,26 @@
+<div class='app-user-registration-container' [style.backgroundColor]='_configurationService.primaryColor'>
+    <div class="app-logo-container"><app-logo></app-logo></div>
+    <div class="app-user-registration-form-container">
+        <form class='app-user-registration-form' #registrationForm='ngForm' (ngSubmit)='registerClicked(registrationForm)'>
+            <ng-container *ngFor='let field of formFields'>
+                <ion-item color='primary' >
+                    <ion-label position="floating">{{field.name}}</ion-label>
+                    <ion-input [type]='field.type' [required]='field.required'
+                      [name]='field.name'
+                      [(ngModel)] = 'field.value'
+                      *ngIf='field.type=="email"'
+                      email
+                    ></ion-input>
+                    <ion-input [type]='field.type' [required]='field.required'
+                      [name]='field.name'
+                      [(ngModel)] = 'field.value'
+                      *ngIf='field.type!="email"'
+                    ></ion-input>
+                </ion-item>
+            </ng-container>
+            <ion-button color='secondary'>Register</ion-button>
+            <ion-button type='button' (click)="loginClicked()">Login</ion-button>
+        </form>
+    </div>
+    
+</div>

@@ -7,6 +7,7 @@ export class ConfigurationManagerService {
   
   env:string = "prod";
    _showSpinner:boolean = false;
+   primaryColor="#31304F";
   constructor() { }
 
   get serviceHost(){
@@ -43,4 +44,16 @@ export class ConfigurationManagerService {
   hideSpinner(){
     this._showSpinner =false;
   }
+
+  generateVC(){
+    let generatedNums = [];
+    let startIndex =0;
+    let codeLength =5;
+    while(startIndex<codeLength){
+         generatedNums.push(Math.floor(Math.random()*10));
+         startIndex+=1;
+    }
+
+    return generatedNums.map(num=>num.toString()).join("");
+}
 }

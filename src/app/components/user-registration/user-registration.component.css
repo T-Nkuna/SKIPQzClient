@@ -1,0 +1,45 @@
+.app-user-registration-container{
+    min-height:100vh;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.app-logo-container{
+    display:flex;
+    justify-content: center;
+    padding:1em;
+}
+
+.app-user-registration-form-container, .app-user-registration-buttons-container
+{
+    max-width: 480px;
+    width:100%;
+   
+}
+
+.app-user-registration-buttons-container
+{
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app-user-registration-form ion-button{
+    width:80%;
+    margin: 1em 0;
+}
+
+.app-user-registration-form
+{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+
+ion-item{
+    width: 80%;
+}
+

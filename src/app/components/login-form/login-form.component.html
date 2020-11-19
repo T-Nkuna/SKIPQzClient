@@ -1,0 +1,12 @@
+<form class='login-form-container'>
+    <ng-container *ngFor='let formField of formFields'>
+        <ion-item  color='primary'class='login-form-field'>
+            <ion-label position="floating">{{formField.name}}</ion-label>
+            <ion-input matInput [name] = 'formField.name' [type]="formField.type" [(ngModel)] = 'formField.value'></ion-input>
+            
+        </ion-item>
+    </ng-container>
+    <ion-button  color='secondary' (click)='loginClicked()'>Login</ion-button>
+    <a routerLink='/forgotPassword'>Forgot Password</a>
+    <ion-button color='primary' (click)='registerClicked()'>Register</ion-button>
+</form>

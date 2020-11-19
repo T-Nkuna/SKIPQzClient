@@ -1,0 +1,13 @@
+.app-logo-rotateY{
+    transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    color:#A8D9E7;
+    display:inline-block;
+}
+
+.app-logo
+{
+    display:inline-block;
+    color:white;
+    margin-bottom: 0.25em;
+}
