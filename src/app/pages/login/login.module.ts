@@ -12,6 +12,7 @@ import { LoginService } from 'src/app/services/login.service';
 import { LogoComponent } from 'src/app/components/logo/logo.component';
 import { LoginFormComponent } from 'src/app/components/login-form/login-form.component';
 import { UserRegistrationComponent } from 'src/app/components/user-registration/user-registration.component';
+import { UpateUserPasswordComponent } from 'src/app/components/upate-user-password/upate-user-password.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,7 @@ import { UserRegistrationComponent } from 'src/app/components/user-registration/
     IonicModule,
     LoginPageRoutingModule
   ],
-  declarations: [LoginPage,LoginComponent,LogoComponent,LoginFormComponent,UserRegistrationComponent],
+  declarations: [LoginPage,LoginComponent,LogoComponent,LoginFormComponent,UserRegistrationComponent,UpateUserPasswordComponent],
   providers:[LoginService]
 })
 export class LoginPageModule {}

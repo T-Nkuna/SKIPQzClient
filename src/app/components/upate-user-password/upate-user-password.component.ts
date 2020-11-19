@@ -43,7 +43,7 @@ export class UpateUserPasswordComponent implements OnInit {
 
    generatedVC:string;
   constructor(
-    private _configurationService:ConfigurationManagerService,
+    public configurationService:ConfigurationManagerService,
     private _loginService:LoginService,
     private _alertController:AlertController,
     private _router:Router
@@ -53,19 +53,19 @@ export class UpateUserPasswordComponent implements OnInit {
   }
 
   sendVC(emailAddress:string){
-    this.generatedVC = this._configurationService.generateVC();
-    this._configurationService.showSpinner();
+    this.generatedVC = this.configurationService.generateVC();
+    this.configurationService.showSpinner();
     this._loginService.sendVC(emailAddress,this.generatedVC)
     .then(response=>{
       console.log(response);
     })
    .finally(()=>{
-      this._configurationService.hideSpinner();
+      this.configurationService.hideSpinner();
     })
   }
 
   updatePassword(){
-    this._configurationService.showSpinner();
+    this.configurationService.showSpinner();
     this._loginService.updatePassword(
       this.passwordFields[0].value,
       this.passwordFields[1].value,
@@ -81,10 +81,9 @@ export class UpateUserPasswordComponent implements OnInit {
       {
         //this._snackBar.open(response.message,"Dismiss");
       }
-     
     })
     .finally(()=>{
-      this._configurationService.hideSpinner();
+      this.configurationService.hideSpinner();
     })
   }
 
