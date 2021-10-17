@@ -11,6 +11,7 @@ export class JournalingService {
   reportError<T>(error,returnVal:T)
   {
       alert("Unkown Error Occured!");
+      console.log(error);
       return returnVal;
   }
 }

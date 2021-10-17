@@ -5,6 +5,7 @@ import {LoginService} from '../../services/login.service';
 import {Credentials} from '../../models/Credentials';
 import { AlertController } from '@ionic/angular';
 import { ConfigurationManagerService } from 'src/app/services/configuration-manager.service';
+import { AccountService } from 'src/app/services/account.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _router:Router, 
-    private _loginService:LoginService,
+    private _accountService:AccountService,
     private _configurationService:ConfigurationManagerService,
     private _activatedRoute:ActivatedRoute,
     private _alertContoller:AlertController
@@ -35,10 +36,11 @@ export class LoginComponent implements OnInit {
      //submit formFields to service
      let credentials = formFields.map(f=>f.value);
      this._configurationService.showSpinner();
-     this._loginService.logUserIn(new Credentials(credentials[0],credentials[1]))
+     this._accountService.signIn(new Credentials(credentials[0],credentials[1]))
      .then(res=>{
      
-       if(res.message==="LoginOk"){
+       if(res){
+        this._router.navigate(['/services']);
          /* this._configurationService.setCurrentUserInfo(<UserInfo>res.responseJSON.currentUserInfo);
           this._router.navigate(['/search']);*/    
        }

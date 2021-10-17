@@ -5,5 +5,6 @@ export interface FormField{
     type:string;
     options?:{value:any;displayValue:string;}[];
     required?:boolean;
+    dataIndex?:string;
 
 }
