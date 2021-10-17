@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormField } from 'src/app/models/FormField';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { LoginService } from 'src/app/services/login.service';
 import { AlertController } from '@ionic/angular';
 import { ConfigurationManagerService } from 'src/app/services/configuration-manager.service';
 import { Config } from './config';

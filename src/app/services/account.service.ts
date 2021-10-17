@@ -32,4 +32,10 @@ export class AccountService  extends JournalingService{
       .toPromise()
       .catch(err=>this.reportError(err,false));
    }
+
+   public requestPasswordReset(recipientEmail:string){
+     return this._httpClient.post<SysResult<boolean>>(`${this.serviceUrl}/forgotPassword/${recipientEmail}`,{})
+     .toPromise()
+     .catch(err=>this.reportError(err,<SysResult<boolean>>{data:false,message:"Unkown Error",ok:false}));
+   }
 }

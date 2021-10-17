@@ -4,6 +4,7 @@ import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 import { ConfigurationManagerService } from 'src/app/services/configuration-manager.service';
 import { AlertController } from '@ionic/angular';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-upate-user-password',
@@ -46,21 +47,18 @@ export class UpateUserPasswordComponent implements OnInit {
     public configurationService:ConfigurationManagerService,
     private _loginService:LoginService,
     private _alertController:AlertController,
-    private _router:Router
+    private _router:Router,
+    private _accountService:AccountService
   ) { }
 
   ngOnInit(): void {
   }
 
-  sendVC(emailAddress:string){
-    this.generatedVC = this.configurationService.generateVC();
-    this.configurationService.showSpinner();
-    this._loginService.sendVC(emailAddress,this.generatedVC)
+  requestPasswordResetLink(emailAddress:string){
+    this._accountService.requestPasswordReset(emailAddress)
     .then(response=>{
-      console.log(response);
-    })
-   .finally(()=>{
-      this.configurationService.hideSpinner();
+       this._alertController.create({message:response.message,buttons:["Dismiss"]})
+       .then(alterElement=>alterElement.present());
     })
   }
 
