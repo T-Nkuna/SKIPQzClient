@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/service-providers/service-providers.module').then( m => m.ServiceProvidersPageModule)
   },
   {
+    path: 'booking-slip',
+    loadChildren: () => import('./pages/booking-slip/booking-slip.module').then( m => m.BookingSlipPageModule)
+  },
+  {
     path:"**",
     redirectTo:"login",
     pathMatch:"full"

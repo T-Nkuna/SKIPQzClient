@@ -28,9 +28,9 @@ export class AccountService  extends JournalingService{
       let formData = new FormData();
       formData.append("userName",loginInfo.username);
       formData.append("password",loginInfo.password);
-      return this._httpClient.post(`${this.serviceUrl}/signIn`,formData)
+      return this._httpClient.post<SysResult<string>>(`${this.serviceUrl}/signIn`,formData)
       .toPromise()
-      .catch(err=>this.reportError(err,false));
+      .catch(err=>this.reportError(err,<SysResult<string>>{data:"",message:"",ok:false}));
    }
 
    public requestPasswordReset(recipientEmail:string){

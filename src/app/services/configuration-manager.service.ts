@@ -8,12 +8,18 @@ export class ConfigurationManagerService {
   env:string = "prod";
    _showSpinner:boolean = false;
    primaryColor="#31304F";
+  
+   clientAppHost = "https://skipqzclient.growthlytix.co.za"
   constructor() { }
 
   get serviceHost(){
     return this.env==="dev"?"https://localhost:44384":"https://skipqzapi.growthlytix.co.za";
   }
 
+  get userName(){
+    return localStorage.getItem('userName');
+  }
+  
   formatDate(dateString:string)
   {
      let datePattern = /\d{4}\-\d{1,2}\-\d{1,2}/;

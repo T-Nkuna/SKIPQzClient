@@ -28,8 +28,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
    /* let userInfo= this._configurationService.userInfo;
     if(userInfo && parseInt(userInfo.currentUserRoleId)==1){
-      this._router.navigate(['/search']);
+     
     }*/
+    if(!!this._configurationService.userName){
+      this._router.navigate(['/services']);
+    }
   }
 
   loginButtonClicked(formFields:FormField[]){
@@ -39,10 +42,12 @@ export class LoginComponent implements OnInit {
      this._accountService.signIn(new Credentials(credentials[0],credentials[1]))
      .then(res=>{
      
-       if(res){
+       if(res.ok){
+         localStorage.setItem('userName',res.data);
         this._router.navigate(['/services']);
          /* this._configurationService.setCurrentUserInfo(<UserInfo>res.responseJSON.currentUserInfo);
-          this._router.navigate(['/search']);*/    
+          this._router.navigate(['/search']);*/  
+          
        }
        else
        {

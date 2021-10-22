@@ -22,4 +22,10 @@ export class BookingManagerService extends JournalingService {
      .toPromise()
      .catch(err=>this.reportError(err,new BookingModel(new ContactDetail())));
   }
+
+  bookingsPerUser(){
+    return this._httpClient.get<BookingModel[]>(`${this.serviceUrl}/${this._configService.userName}`)
+    .toPromise()
+    .catch(err=>this.reportError(err,<BookingModel[]>[]));
+  }
 }
