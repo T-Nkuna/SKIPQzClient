@@ -1,11 +1,10 @@
 
- 
-    <div *ngFor="let bookingData of bookingInfo">
-      <ng-container *ngTemplateOutlet="bookingCard; context:{$implicit:bookingData.booking,bookedServiceProvider:bookingData.bookedServiceProvider,bookedService:bookingData.bookedService}"></ng-container>
-    </div>
-
-
-
+ <ion-content>
+  <div *ngFor="let bookingData of bookingInfo">
+    <ng-container *ngTemplateOutlet="bookingCard; context:{$implicit:bookingData.booking,bookedServiceProvider:bookingData.bookedServiceProvider,bookedService:bookingData.bookedService}"></ng-container>
+  </div>
+ </ion-content>
+    
 <ng-template #bookingCard let-booking let-bookedServiceProvider="bookedServiceProvider" let-bookedService="bookedService">
     <ion-card>
       <ion-card-header color="primary">

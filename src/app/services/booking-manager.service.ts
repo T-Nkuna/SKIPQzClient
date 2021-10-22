@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ContactDetail } from '../components/contact-details/contact-details.component';
 import { BookingModel } from '../models/booking.model';
@@ -24,7 +24,7 @@ export class BookingManagerService extends JournalingService {
   }
 
   bookingsPerUser(){
-    return this._httpClient.get<BookingModel[]>(`${this.serviceUrl}/${this._configService.userName}`)
+    return this._httpClient.get<BookingModel[]>(`${this.serviceUrl}/UserBookings?userName=${this._configService.userName}`)
     .toPromise()
     .catch(err=>this.reportError(err,<BookingModel[]>[]));
   }
