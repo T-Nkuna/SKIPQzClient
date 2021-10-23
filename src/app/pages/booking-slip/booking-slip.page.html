@@ -25,7 +25,7 @@
           </ion-row>
         </ion-grid>
         <div *ngIf="booking.canCancel">
-          <ion-button  >Cancel</ion-button>
+          <ion-button (click)="cancelBooking(booking.bookingId)" >Cancel</ion-button>
         </div>
       </ion-card-content>
     </ion-card>

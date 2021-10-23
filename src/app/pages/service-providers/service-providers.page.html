@@ -2,7 +2,7 @@
     <p class="ion-text-center">
         Select Service Provider
     </p>
-      <ion-list>
+    <ion-list *ngIf="serviceProviders.length>0; else noData">
     <ion-item *ngFor="let serviceProvider of serviceProviders" [routerLink]="[serviceProvider.serviceProviderId,'schedule']">
         <ion-avatar slot="start">
             <ion-img src="{{configManager.serviceHost+'/'+serviceProvider.imageUrl}}"></ion-img>
@@ -13,4 +13,7 @@
     </ion-item>
 </ion-list>
 </ion-content>
+<ng-template #noData>
+    <h3 style="text-align: center;">No Service Providers</h3>
+</ng-template>
 

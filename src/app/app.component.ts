@@ -49,14 +49,9 @@ export class AppComponent {
   onMenuItemClick(menuItemText:string){
     switch(menuItemText){
       case 'My Bookings':
-        this.configurationManager.showSpinner();
-        this._bookingService.bookingsPerUser()
-        .then(bookingList=>{
-          this.menuControlller.close();
-          localStorage.setItem('bookings',JSON.stringify(bookingList));
-          this._router.navigate(["/booking-slip"])
-        })
-        .finally(()=>this.configurationManager.hideSpinner())
+        this.menuControlller.close();
+        this._router.navigate(["/booking-slip"]);
+      break;
     }
   }
 }

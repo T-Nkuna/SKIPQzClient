@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ConfigurationManagerService {
   
-  env:string = "dev";
+  env:string = "prod";
    _showSpinner:boolean = false;
    primaryColor="#31304F";
   

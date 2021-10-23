@@ -19,7 +19,7 @@
   </ion-content>
   <ion-menu side="start" menuId="sideMenu" contentId="content">
     <ion-list>
-      <ion-item *ngFor="let sideMenuItem of sideMenuItems">
+      <ion-item *ngFor="let sideMenuItem of sideMenuItems" [ngStyle]="{cursor:'pointer'}">
         <ion-label (click)="onMenuItemClick(sideMenuItem.text)">{{sideMenuItem.text}}</ion-label>
       </ion-item>
     </ion-list>
