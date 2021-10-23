@@ -24,9 +24,8 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-       
-        <div>
-          <ion-button >Cancel</ion-button>
+        <div *ngIf="booking.canCancel">
+          <ion-button  >Cancel</ion-button>
         </div>
       </ion-card-content>
     </ion-card>

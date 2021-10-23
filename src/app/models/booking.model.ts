@@ -12,6 +12,7 @@ export class BookingModel
     public contactNo:string = "";
     public bookingId:number=0;
     public userName:string='';
+    public canCanel = true;
     constructor(contactDetails:ContactDetail){
         this.contactEmail = contactDetails.email,
         this.contactName = contactDetails.name;
